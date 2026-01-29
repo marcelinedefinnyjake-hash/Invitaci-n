@@ -83,16 +83,18 @@
 
     /* ------------------ PANTALLA 2 ------------------ */
     #pantalla2 {
-      display: none;
-      width: 100%;
-      min-height: 100vh;
-      background-image: url('images/fondo-pooh.jpg');
-      background-size: cover;
-      background-position: center;
-      color: #5d4037;
-      position: relative;
-      overflow-y: auto;
-    }
+  display: none;
+  width: 100%;
+  min-height: 100vh; /* Hace que el fondo cubra toda la pantalla */
+  background-image: url('images/fondo-pooh.jpg');
+  background-size: cover; /* Asegura que el fondo cubra toda la pantalla */
+  background-position: center;
+  background-repeat: no-repeat; /* Para que no se repita la imagen */
+  color: #5d4037;
+  position: relative;
+  overflow-y: auto;
+}
+
 
     /* Menú superior con banner */
     #menu-banner {
@@ -389,3 +391,4 @@ calcularDias();
 
 </body>
 </html>
+
