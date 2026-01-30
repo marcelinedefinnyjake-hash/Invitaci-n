@@ -74,7 +74,7 @@
     }
     @keyframes twinkle {
       0%,100% {opacity:0;}
-      15% {opacity:1;}
+      10% {opacity:1;}
     }
 
     /* ------------------ PANTALLA 2 ------------------ */
@@ -209,5 +209,87 @@
     <div class="info-card"><i>📅</i> Fecha: 15 de marzo</div>
     <div class="info-card"><i>⏰</i> Hora: 18:00</div>
     <div class="info-card"><i>📍</i> Lugar: Mi casa <a href="#" target="_blank">Ver en Google Maps</a></div>
-    <div class="info-card"><i>👗</i> Dress code: Marrón
+    <div class="info-card"><i>👗</i> Dress code: Marrón</div>
+  </div>
 
+  <div id="regalos" class="section-full gift">
+    <h2>Lista de regalos</h2>
+    <p>Si deseas hacernos un regalito, aquí te dejamos algunas ideas ❤️</p>
+    <a href="https://www.amazon.com/tu-lista" target="_blank">Ver lista de regalos</a>
+    <p class="note">Evita regalar tallas de recién nacido. Mejor tallas más grandes que pueda usar más tiempo 😊</p>
+    <p class="note">Agradecemos cualquier detalle con mucho cariño, pero no es obligatorio.</p>
+  </div>
+
+  <div id="confirmar" class="section-full">
+    <h2>Confirmar asistencia</h2>
+    <p>Confirma tu asistencia antes del 5 de marzo</p>
+    <a href="https://wa.me/1234567890" target="_blank" class="confirm-btn">Confirmar por WhatsApp</a>
+  </div>
+
+  <div id="detalles" class="section-full">
+    <h2>Detalles especiales</h2>
+    <p>Espacio para fotos del ultrasonido y paleta de colores del evento 🎨</p>
+  </div>
+
+  <div id="cuentas" class="section-full">
+    <h2>Cuentas regresivas</h2>
+    <p>Faltan <span id="dias-evento">X</span> días para celebrar juntos 🎉</p>
+    <p>Faltan <span id="dias-bebe">Y</span> días para conocer nuestra bendición 👶</p>
+  </div>
+</div>
+
+<!-- Google Translate -->
+<div id="google_translate_element" style="position:fixed;top:10px;right:10px;z-index:1000;"></div>
+<script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({
+    pageLanguage: 'es',
+    layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL
+  }, 'google_translate_element');
+}
+</script>
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+<script>
+// Pantalla 1 -> Pantalla 2
+function mostrarPantalla2(){
+  document.getElementById("pantalla1").style.display="none";
+  document.getElementById("pantalla2").style.display="block";
+  mostrarSeccion('sobre'); // muestra sección inicial
+}
+
+// Mostrar sección y ocultar otras
+function mostrarSeccion(id){
+  const secciones = document.querySelectorAll(".section-full");
+  secciones.forEach(sec => sec.style.display="none");
+  document.getElementById(id).style.display="flex";
+}
+
+// Estrellitas dinámicas
+for(let i=0;i<50;i++){
+  let star=document.createElement("div");
+  star.classList.add("star");
+  star.style.left=Math.random()*100+"%";
+  star.style.top=Math.random()*100+"%";
+  star.style.width=2+Math.random()*3+"px";
+  star.style.height=2+Math.random()*3+"px";
+  star.style.animationDuration=2+Math.random()*3+"s";
+  document.getElementById("pantalla1").appendChild(star);
+}
+
+// Cuentas regresivas
+function calcularDias(){
+  const evento = new Date("2026-03-15");
+  const hoy = new Date();
+  const diffEvento = Math.ceil((evento - hoy)/(1000*60*60*24));
+  document.getElementById("dias-evento").textContent = diffEvento;
+
+  const nacimiento = new Date("2026-04-10");
+  const diffBebe = Math.ceil((nacimiento - hoy)/(1000*60*60*24));
+  document.getElementById("dias-bebe").textContent = diffBebe;
+}
+calcularDias();
+</script>
+
+</body>
+</html>
