@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Invitación Baby Shower</title>
+
+  <!-- Fuentes desde Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- Favicon -->
+  <link rel="icon" href="icon.ico" type="image/x-icon">
+
+  <style>
+    /* ------------------ GENERAL ------------------ */
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* ------------------ PANTALLA 1 ------------------ */
+    #pantalla1 {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      background: #fceabb;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    #pantalla1 h1 {
+      font-size: 2.5em;
+      color: #d9822b;
+      animation: aparecer 1.5s ease-out;
+      margin-bottom: 20px;
+    }
+
+    @keyframes aparecer {
+      0% {opacity:0; transform: translateY(-50px);}
+      60% {opacity:1; transform: translateY(10px);}
+      80% {transform: translateY(-5px);}
+      100% {transform: translateY(0);}
+    }
+
+    #pantalla1 button {
+      padding: 15px 30px;
+      font-size: 1.5em;
+      border: none;
+      border-radius: 12px;
+      background: linear-gradient(45deg, #fdd835, #ffc107);
+      color: #fff;
+      cursor: pointer;
+      transition: transform 0.2s, background 0.3s;
+      box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+      margin-top: 20px;
+    }
+    #pantalla1 button:hover {
+      transform: scale(1.1);
+      background: linear-gradient(45deg,#ffc107,#fdd835);
+    }
+    #pantalla1 button:active {
+      transform: scale(0.95);
+      background: linear-gradient(45deg,#fbc02d,#fdd835);
+    }
+
+    /* Estrellitas */
+    .star {
+      position: absolute;
+      width: 3px;
+      height: 3px;
+      background: #fff;
+      border-radius: 50%;
+      opacity: 0;
+      animation: twinkle 5s linear infinite;
+    }
+    @keyframes twinkle {
+      0%,100% {opacity:0;}
+      90% {opacity:1;}
+    }
+
+    /* ------------------ PANTALLA 2 ------------------ */
+    #pantalla2 {
+      display: none;
+      width: 100%;
+      min-height: 100vh;
+      background-image: url('images/fondo-pooh.jpg');
+      background-size: cover;
+      background-position: center;
+      color: #5d4037;
+      position: relative;
+      overflow-y: auto;
+    }
+
+    /* Menú superior con banner */
+    #menu-banner {
+      width: 100%;
+      height: 25vh; /* 25% de la altura de la pantalla */
+      background-image: url('images/banner-pooh.png');
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 10px;
+      justify-content: center;
+    }
+
+    #menu {
+      display: flex;
+      justify-content: space-around;
+      width: 90%;
+      margin-top: 180px;
+    }
+
+    .menu-btn {
+      padding: 12px 15px;
+      border: none;
+      border-radius: 12px;
+      background: linear-gradient(45deg,#fdd835,#ffc107);
+      color: #fff;
+      font-size: 0.9em;
+      font-weight: 600; /* Negrita */
+      cursor: pointer;
+      transition: transform 0.2s, background 0.3s;
+      text-align: center;
+      flex: 1;
+      margin: 0 5px;
+      font-family: 'Lora', serif; /* Fuente bonita */
+    }
+    .menu-btn:hover {
+      transform: scale(1.05);
+    }
+    .menu-btn:active {
+      transform: scale(0.95);
+      background: linear-gradient(45deg,#fbc02d,#fdd835);
+    }
+
+    /* Secciones completas */
+    .section-full {
+      display: none;
+      width: 100%;
+      min-height: calc(100vh - 180px); /* Resta el tamaño del menú */
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      text-align: center;
+      background: rgba(105, 58, 12, 0.15); /* Fondo marrón oscuro con 15% de opacidad */
+      border-radius: 10px; /* Bordes redondeados */
+      overflow-y: auto;
+    }
+
+    .section-full h2 {
+      color: #d9822b;
+      margin-bottom: 15px;
+      font-weight: bold;
+      font-family: 'Lora', serif; /* Fuente bonita */
+    }
+
+    /* Caja de texto similar a la de Info */
+.text-box {
+  background: rgba(255, 255, 255, 0.85); /* Fondo suave */
+  border-radius: 15px;
+  padding: 20px;
+  width: 50%; /* Ajusta el tamaño según lo necesites */
+  margin-left: auto; /* Esto empuja el text-box a la derecha */
+  margin-right: 85px;  /* Asegura que no haya espacio extra a la derecha */
+  font-family: 'Lora', serif;
+  font-weight: 700;
+  font-size: 1.1em;
+  color: #5d4037;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+    }
+
+    .bebe-name {
+      font-size: 2em;
+      font-weight: bold;
+      color: #ff6f00;
+      margin: 10px 0;
+    }
+
+    .note {
+      font-size: 0.9em;
+      font-style: italic;
+      color: #6d4c41;
+      margin-top: 10px;
+    }
+
+    .right-text {
+      text-align: right;
+      font-style: italic;
+      font-size: 0.9em;
+      color: #8d6e63;
+      margin-top: 10px;
+    }
+
+    .info-card {
+      background: #fff3e0;
+      border-radius: 10px;
+      padding: 15px;
+      margin: 10px 0;
+      width: 80%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      font-size: 1em;
+    }
+
+    .info-card i {
+      margin-right: 10px;
+      font-size: 1.2em;
+    }
+
+    .gift a {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 10px 20px;
+      background: linear-gradient(45deg, #fdd835, #ffc107);
+      color: #fff;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: transform 0.2s, background 0.3s;
+    }
+
+    .gift a:hover {
+      transform: scale(1.05);
+    }
+
+    .gift a:active {
+      transform: scale(0.95);
+      background: linear-gradient(45deg, #fbc02d, #fdd835);
+    }
+
+    /* Confirmar asistencia */
+    .confirm-btn {
+      display: inline-block;
+      padding: 12px 20px;
+      background: linear-gradient(45deg, #fdd835, #ffc107);
+      color: #fff;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: transform 0.2s, background 0.3s;
+      margin-top: 15px;
+    }
+
+    /* Responsive */
+    @media(max-width:600px){
+      #pantalla1 h1 {
+        font-size: 2em;
+      }
+      .menu-btn {
+        font-size: 0.8em;
+        padding: 8px;
+      }
+      .bebe-name {
+        font-size: 1.5em;
+      }
+      .info-card {
+        width: 90%;
+      }
+      #menu-banner {
+        padding: 15px 0 8px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- PANTALLA 1 -->
+<div id="pantalla1">
+  <h1>Tienes una dulce invitación 💌</h1>
+  <button onclick="mostrarPantalla2()">Aceptar</button>
+</div>
+
+<!-- PANTALLA 2 -->
+<div id="pantalla2">
+
+  <!-- MENÚ SUPERIOR CON BANNER -->
+  <div id="menu-banner">
+    <div id="menu">
+      <button class="menu-btn" onclick="mostrarSeccion('sobre')">Sobre</button>
+      <button class="menu-btn" onclick="mostrarSeccion('info')">Info</button>
+      <button class="menu-btn" onclick="mostrarSeccion('regalos')">Regalos</button>
+      <button class="menu-btn" onclick="mostrarSeccion('confirmar')">Confirmar</button>
+      <button class="menu-btn" onclick="mostrarSeccion('detalles')">Detalles</button>
+      <button class="menu-btn" onclick="mostrarSeccion('cuentas')">Cuentas</button>
+    </div>
+  </div>
+
+  <!-- SECCIONES -->
+  <div id="sobre" class="section-full">
+    <h2>Sobre el Baby Shower</h2>
+    <div class="text-box">
+      <p><i>Con mucha alegría y emoción, te invitamos a <br>
+            celebrar la llegada de nuestro bebé, quien ya <br>
+            ocupa el mayor espacio en nuestro corazón.
+ <br> <br>  Estamos a punto de comenzar la aventura más hermosa <br>
+            de nuestras vidas. Cada pequeño gesto, cada sonrisa, <br>
+            será una nueva página de una historia llena de amor y <br>
+             alegría.
+
+
+</i></p>
+      <div class="bebe-name">Bebecito</div>
+      <p><i>Te agradecemos por ser parte de esta aventura y por <br>
+            acompañarnos en cada paso de este mágico camino.
+</i></p>
+
+      <p class="right-text"> "A veces las cosas más pequeñas ocupan <br>
+ el mayor espacio en tu corazón." ✨ <br> — Winnie the Pooh
+</p>
+    </div>
+  </div>
+
+  <div id="info" class="section-full">
+    <h2>Información</h2>
+    <div class="text-box">
+      <div class="info-card"><i>📅</i> Fecha: 17 de Mayo </div>
+      <div class="info-card"><i>⏰</i> Hora: 4:00 P.M. </div>
+      <div class="info-card"><i>📍</i> Lugar: Mi casa   <a href="#" target="_blank">Ver en Google Maps</a></div>
+      <div class="info-card"><i>👗</i> Dress code: Marrón</div>
+    </div>
+  </div>
+
+  <div id="regalos" class="section-full gift">
+    <h2>Lista de regalos</h2>
+    <div class="text-box">
+      <p>Si deseas hacernos un regalito, aquí te dejamos algunas ideas ❤️</p>
+      <a href="https://www.amazon.com/tu-lista" target="_blank">Ver lista de regalos</a>
+      <p class="note">Las ropitas y pañales de recién nacido duran poco, por lo que <br>
+                      cualquier talla más grande será mucho más útil. 😊
+</p>
+      <p class="note">Agradecemos cualquier detalle con mucho cariño.</p>
+    </div>
+  </div>
+
+  <div id="confirmar" class="section-full">
+    <h2>Confirmar asistencia</h2>
+    <div class="text-box">
+      <p>Confirma tu asistencia antes del 1 de mayo</p>
+      <a href="https://wa.me/1234567890" target="_blank" class="confirm-btn">Confirmar por WhatsApp</a>
+    </div>
+  </div>
+
+  <div id="detalles" class="section-full">
+    <h2>Detalles especiales</h2>
+    <div class="text-box">
+      <p>Espacio para fotos del ultrasonido y paleta de colores del evento 🎨</p>
+    </div>
+  </div>
+
+  <div id="cuentas" class="section-full">
+    <h2>Cuentas regresivas</h2>
+    <div class="text-box">
+      <p>Faltan <span id="dias-evento">X</span> días para celebrar juntos 🎉</p>
+      <p>Faltan <span id="dias-bebe">Y</span> días para conocer nuestra bendición 👶</p>
+    </div>
+  </div>
+</div>
+
+<script>
+// Pantalla 1 -> Pantalla 2
+function mostrarPantalla2(){
+  document.getElementById("pantalla1").style.display="none";
+  document.getElementById("pantalla2").style.display="block";
+  mostrarSeccion('sobre'); // muestra sección inicial
+}
+
+// Mostrar sección y ocultar otras
+function mostrarSeccion(id){
+  const secciones = document.querySelectorAll(".section-full");
+  secciones.forEach(sec => sec.style.display="none");
+  document.getElementById(id).style.display="flex";
+}
+
+// Estrellitas dinámicas
+for(let i=0;i<50;i++){
+  let star=document.createElement("div");
+  star.classList.add("star");
+  star.style.left=Math.random()*100+"%";
+  star.style.top=Math.random()*100+"%";
+  star.style.width=2+Math.random()*3+"px";
+  star.style.height=2+Math.random()*3+"px";
+  star.style.animationDuration=2+Math.random()*3+"s";
+  document.getElementById("pantalla1").appendChild(star);
+}
+
+// Cuentas regresivas
+function calcularDias(){
+  const evento = new Date("2026-03-15");
+  const hoy = new Date();
+  const diffEvento = Math.ceil((evento - hoy)/(1000*60*60*24));
+  document.getElementById("dias-evento").textContent = diffEvento;
+
+  const nacimiento = new Date("2026-04-10");
+  const diffBebe = Math.ceil((nacimiento - hoy)/(1000*60*60*24));
+  document.getElementById("dias-bebe").textContent = diffBebe;
+}
+calcularDias();
+</script>
+
+</body>
+</html>
